@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -15,10 +16,10 @@
 </head>
 
 <body>
-
+<Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            <Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
         </Found>
         <NotFound>
@@ -28,6 +29,9 @@
             </LayoutView>
         </NotFound>
     </Router>
+</Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
+
+
 
     <script src="_framework/blazor.web.js" suppress-error="BL9992"></script>
 </body>

@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/BlazorWasmClientInteractivity/v17
+/src/.vs/BlazorApp
+/src/Client/bin/Debug/net8.0
+/src/Client/obj
+/src/Server/bin/Debug/net8.0
+/src/Server/obj
+/src/Server/Pages/Authentication.razor
+/src/Server/Shared/RedirectToLogin.razor
+/src/Server/BlazorApp.csproj.user
+*.user

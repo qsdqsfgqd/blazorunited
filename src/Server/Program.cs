@@ -1,12 +1,24 @@
 using BlazorApp;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+                .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAdServer"));
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddWebAssemblyComponents();
-    //.AddServerComponents();
+    .AddWebAssemblyComponents()
+.AddServerComponents();
 
+
+builder.Services.AddAuthorization(options =>
+{
+    // By default, all incoming requests will be authorized according to the default policy
+    options.FallbackPolicy = options.DefaultPolicy;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,8 +33,10 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+
+
 app.MapRazorComponents<App>()
-    .AddWebAssemblyRenderMode();
-    //.AddServerRenderMode();
+    .AddWebAssemblyRenderMode()
+    .AddServerRenderMode();
 
 app.Run();
